@@ -41,25 +41,20 @@ A fixed random seed is used during evaluation to ensure fair comparisons between
 ### Crossover
 
 #### One-Point Crossover
-
 A random split point is selected and keyframes are exchanged between parents.
 
 #### Uniform Crossover
-
 Each keyframe is independently inherited from either parent with equal probability.
 
 #### Arithmetic Crossover
-
 Children are generated through weighted averaging of parent genes, making it particularly suitable for continuous control parameters.
 
 ### Mutation
 
 #### Gaussian Mutation
-
 Adds normally distributed noise to selected genes.
 
 #### Uniform Reset Mutation
-
 Randomly replaces selected genes with newly generated values from the search space.
 
 ## Selection Methods
@@ -99,13 +94,10 @@ Examples include:
 The project generated:
 
 ### Best Keyframe Solution
-
 `best_keyframes.txt`
-
 Stores the highest-performing evolved motion sequence.
 
 ### Convergence Analysis
-
 `convergence_plot.png`
 
 Displays best-fitness and average-fitness trends across generations for all experimental configurations.
