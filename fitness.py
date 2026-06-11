@@ -8,7 +8,17 @@ def evaluate(keyframes, env):
     episode_reward  = 0
 
     while True:
-        # Pick action from current keyframe (all values except the last duration)
+        current_kf= keyframes[keyframe_index][:1]
+        next_kf = keyframes[(keyframe_index+1)%len(keyframes)][:1]
+        duration = int(keyframes[keyframe_index][:1])
+
+        if (duration ==0): 
+            duration=0.1
+            
+        #t goes from 0 to 1 as we move through the keyframe
+        t = 1.0 - (remaining_steps)/duration
+        
+        # Then we pick action from current keyframe (all values except the last duration)
         action = keyframes[keyframe_index][:-1]
 
         observation, reward, terminated, truncated, info = env.step(action)

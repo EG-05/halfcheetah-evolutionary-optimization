@@ -1,16 +1,17 @@
 import numpy as np
 
 # Number of keyframes in the cycle
-K = 5
+K = 6
 
 # Starter keyframes from kf-halfcheetah.py (used as one individual in the initial population)
 # Each keyframe: [torque1, torque2, torque3, torque4, torque5, torque6, duration]
 starter_keyframes = [
-    np.array([-0.10,  0.05, -0.08,  0.12, -0.06,  0.03, 25]),
-    np.array([ 0.20, -0.15,  0.30, -0.10,  0.25, -0.05, 40]),
-    np.array([ 0.40, -0.40,  0.50, -0.30,  0.50, -0.20, 15]),
-    np.array([ 0.50, -0.20,  0.40, -0.15,  0.30, -0.10, 20]),
-    np.array([ 0.10,  0.00, -0.10,  0.05, -0.05,  0.02, 30]),
+    np.array([ 0.9, -0.7,  0.6, -0.6,  0.5, -0.3,  10]),
+    np.array([ 0.5, -0.9,  0.4,  0.5, -0.6,  0.7,  10]),
+    np.array([ 0.3, -0.5,  0.2,  0.8, -0.8,  0.5,   8]),
+    np.array([-0.6,  0.5, -0.3,  0.9, -0.7,  0.6,  10]),
+    np.array([ 0.5, -0.6,  0.7,  0.5, -0.9,  0.4,  10]),
+    np.array([ 0.8, -0.8,  0.5,  0.3, -0.5,  0.2,   8]),
 ]
 
 # EA hyperparameters

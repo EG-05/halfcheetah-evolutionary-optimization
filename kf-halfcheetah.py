@@ -23,24 +23,25 @@ remaining_steps = int(keyframes[keyframe_index][-1])
 episode_reward = 0
 
 while True:
-    # Select action from the current keyframe
-    action = keyframes[keyframe_index][:-1]
+    current_kf = keyframes[keyframe_index][:-1]
+    next_kf    = keyframes[(keyframe_index + 1) % K][:-1]
+    duration   = int(keyframes[keyframe_index][-1])
 
-    # Take a step in the environment
+    # Lerp from current keyframe toward next
+    t      = 1.0 - (remaining_steps / duration)
+    action = (1.0 - t) * current_kf + t * next_kf
+
     observation, reward, terminated, truncated, info = env.step(action)
-    episode_reward += reward
+    episode_reward  += reward
+    remaining_steps -= 1
 
-    env.render()    
-    remaining_steps -= 1 #for keyframe
-
-    # If the keyframe duration is completed, move to the next keyframe
     if remaining_steps == 0:
-        keyframe_index = (keyframe_index + 1) % K  # Cycle through keyframes
+        keyframe_index  = (keyframe_index + 1) % K
         remaining_steps = int(keyframes[keyframe_index][-1])
 
     if terminated or truncated:
         print(f"Episode ended. Total reward: {episode_reward}")
-        episode_reward = 0
+        episode_reward  = 0
         observation, info = env.reset()
-        keyframe_index = 0
+        keyframe_index  = 0
         remaining_steps = int(keyframes[keyframe_index][-1])

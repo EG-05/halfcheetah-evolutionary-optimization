@@ -75,7 +75,7 @@ def main():
     plt.tight_layout()
     plt.savefig("convergence_plot.png", dpi=150)
     plt.close()
-    print("✓ Saved convergence_plot.png")
+    print("Saved convergence_plot.png")
 
     # Print final rewards 
     print("\n── Final Rewards ──")

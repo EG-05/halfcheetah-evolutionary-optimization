@@ -11,7 +11,7 @@ def random_chromosome(k):
     chromosome = []
 
     for _ in range(k):
-        torques  = np.random.uniform(-0.35, 0.35, 6)
+        torques  = np.random.uniform(-0.8, 0.8, 6)
         duration = float(np.random.randint(5, 51))
         chromosome.append(np.append(torques, duration))
     return chromosome
@@ -63,7 +63,6 @@ def rank_selection(population, fitnesses):
     return population[np.random.choice(len(population), p=probs)]
 
 
-
 def crossover(parent1, parent2):
 
     #One-point crossover -> swap keyframes after a random split point
@@ -86,7 +85,7 @@ def mutate(chromosome):
         mutated[i][j]  = np.clip(mutated[i][j], 5, 50)
     else:
         # torque gene —> change by small amount
-        mutated[i][j] += np.random.uniform(-0.2, 0.2)
+        mutated[i][j] += np.random.uniform(-0.3, 0.3)
         mutated[i][j]  = np.clip(mutated[i][j], -1.0, 1.0)
 
     return mutated
